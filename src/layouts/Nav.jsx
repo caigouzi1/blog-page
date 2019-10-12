@@ -22,15 +22,12 @@ export default class Nav extends React.Component {
 
   componentWillMount() {
     const menuTreeNode = this.renderMenu(NavList);
-    console.log(menuTreeNode)
     this.setState({
       menuTreeNode
     })
   }
 
   render() {
-
-
     return (
       <Menu
         onClick={this.handleClick}
@@ -40,6 +37,7 @@ export default class Nav extends React.Component {
         theme="dark"
       >
         {this.state.menuTreeNode}
+        <div style = {{position: "absolute",bottom:20,textAlign: "center" }}><a href='https://github.com/caigouzi1' target="_blank" style={{ fontSize: 16 }}><Icon type="github" /><span style={{ marginLeft: 10 }}>GitHub</span></a></div>
       </Menu>
     );
   }

@@ -1,11 +1,25 @@
 import React from 'react';
+import { connect } from 'dva';
+import TitleList from "@/components/TitleList"
 
-export default class Test extends React.Component {
-    render(){
-        return (
-            <div>
-                <h1>HOME </h1>
-            </div>
-        );
-    }
+
+@connect(article => ({
+  article,
+}))
+
+class Article extends React.Component {
+  componentDidMount() {
+    this.props.dispatch({
+      type: "article/articleAll"
+    });
   }
+
+  render() {
+    const { article } = this.props.article;
+    return (
+      <TitleList dataSource={article.data.Data}></TitleList>
+    );
+  }
+}
+
+export default Article

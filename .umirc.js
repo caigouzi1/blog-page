@@ -31,7 +31,28 @@ export default {
       routes: [
         { path: '/', component: './home' },
         { path: '/github', component: './github' },
+        { path: '/article/:id', component: './home/detail' },
       ],
     }
-  ]
+  ],
+
+  "proxy": {
+    "/blog": {
+      "target": "http://172.16.1.22:8080/blog",
+      "changeOrigin": true,
+      "pathRewrite": { "^/blog": "" }
+    }
+  },
+
+  // "proxy": {
+  //   "/dock": {
+  //     "target": "http://172.16.1.22:80/dock",
+  //     "changeOrigin": true,
+  //     "pathRewrite": {"^/dock": ""}
+  //   }
+  // },
+
+  "theme": {
+    "primary-color": "#1DA57A",
+  },
 }

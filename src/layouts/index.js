@@ -1,9 +1,9 @@
-import { Layout, Icon, Card } from "antd";
+import { Layout, Icon, Card, Avatar } from "antd";
 import React from "react";
-import logo from "../assets/logo.svg";
+import avatar from "@/assets/image/avatar.jpg";
 import "./index.less";
 import Nav from "./Nav";
-import { Link } from "dva/router";
+
 
 const { Header, Footer, Sider, Content } = Layout;
 
@@ -27,9 +27,7 @@ export default class Home extends React.Component {
             collapsed={this.state.collapsed}
           >
             <div className="logo">
-              <Link to="/">
-                <img src={logo} alt="" />
-              </Link>
+              <Avatar size={64} src={avatar} />
             </div>
             <Nav />
           </Sider>
@@ -43,9 +41,9 @@ export default class Home extends React.Component {
               />
             </Header>
             <Card className="content">
-              <Content>{this.props.children}</Content>
+              <Content style={{ maxWidth: 900, margin: "auto" }}>{this.props.children}</Content>
             </Card>
-            <Footer>@基于Umi框架的功能测试</Footer>
+            <Footer><a href='https://github.com/caigouzi1' target="_blank" style={{ fontSize: 18 }}><Icon type="github" /><span style={{ marginLeft: 10 }}>GitHub</span></a></Footer>
           </Layout>
         </Layout>
       </div>
