@@ -1,49 +1,43 @@
-import { Layout, Icon, Card, Avatar } from "antd";
-import React from "react";
-import avatar from "@/assets/image/avatar.jpg";
-import "./index.less";
-import Nav from "./Nav";
-
+import { Layout, Icon, Card, Avatar } from 'antd';
+import React from 'react';
+import avatar from '@/assets/image/avatar.jpg';
+import './index.less';
+import Nav from './Nav';
 
 const { Header, Footer, Sider, Content } = Layout;
 
 export default class Home extends React.Component {
   state = {
-    collapsed: false
+    collapsed: false,
   };
   toggle = () => {
     this.setState({
-      collapsed: !this.state.collapsed
+      collapsed: !this.state.collapsed,
     });
   };
   render() {
     return (
       <div>
         <Layout>
-          <Sider
-            className="sider"
-            trigger={null}
-            collapsible
-            collapsed={this.state.collapsed}
-          >
+          <Sider className="sider" trigger={null} collapsible collapsed={this.state.collapsed}>
             <div className="logo">
               <Avatar size={64} src={avatar} />
             </div>
             <Nav />
           </Sider>
           <Layout className="container">
-            <Header style={{ background: "#fff", padding: 0, height: 80 }}>
+            <Header style={{ background: '#fff', padding: 0, height: 80 }}>
               <Icon
                 className="trigger"
-                type={this.state.collapsed ? "menu-unfold" : "menu-fold"}
+                type={this.state.collapsed ? 'menu-unfold' : 'menu-fold'}
                 onClick={this.toggle}
                 style={{ fontSize: 30, marginTop: 20, marginLeft: 20 }}
               />
             </Header>
             <Card className="content">
-              <Content style={{ maxWidth: 900, margin: "auto" }}>{this.props.children}</Content>
+              <Content style={{ maxWidth: 900, margin: 'auto' }}>{this.props.children}</Content>
             </Card>
-            <Footer><a href='https://github.com/caigouzi1' target="_blank" style={{ fontSize: 18 }}><Icon type="github" /><span style={{ marginLeft: 10 }}>GitHub</span></a></Footer>
+            <Footer>兴趣使然</Footer>
           </Layout>
         </Layout>
       </div>

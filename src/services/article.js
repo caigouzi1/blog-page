@@ -1,10 +1,10 @@
-import { post } from "../utils/http";
+import { post } from '../utils/http';
 
 export default {
   async queryArticleAll(params) {
-    return await post("/article/all", params);
+    return await post('/article/all', params);
   },
   async queryArticleDetail(params) {
-    return await post("/article/one", params);
-  }
+    return await post('/article/one', params);
+  },
 };

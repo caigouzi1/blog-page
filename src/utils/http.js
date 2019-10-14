@@ -1,7 +1,7 @@
-import axios from "axios";
+import axios from 'axios';
 
 axios.defaults.timeout = 5000;
-axios.defaults.baseURL = "/blog";
+axios.defaults.baseURL = '/blog';
 
 //http request 拦截器
 axios.interceptors.request.use(
@@ -9,13 +9,13 @@ axios.interceptors.request.use(
     //const token = getCookie('名称');
     config.data = JSON.stringify(config.data);
     config.headers = {
-      "Content-Type": "application/json"
+      'Content-Type': 'application/json',
     };
     return config;
   },
   error => {
     return Promise.reject(error);
-  }
+  },
 );
 // //http response 拦截器
 // axios.interceptors.response.use(
@@ -66,7 +66,7 @@ export function post(url, data = {}) {
       },
       err => {
         reject(err);
-      }
+      },
     );
   });
 }
@@ -85,7 +85,7 @@ export function patch(url, data = {}) {
       },
       err => {
         reject(err);
-      }
+      },
     );
   });
 }
@@ -105,7 +105,7 @@ export function put(url, data = {}) {
       },
       err => {
         reject(err);
-      }
+      },
     );
   });
 }

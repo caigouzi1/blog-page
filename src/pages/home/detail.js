@@ -2,15 +2,13 @@ import React from 'react';
 import { connect } from 'dva';
 import { Input } from 'antd';
 import POWERMODE from '@/assets/js/activate-power-mode';
-import Utils from "@/utils/myTools";
+import Utils from '@/utils/myTools';
 
 const { TextArea } = Input;
 
 @connect(article => ({
   article,
 }))
-
-
 class Article extends React.Component {
   componentDidMount() {
     //编辑器特效
@@ -18,27 +16,27 @@ class Article extends React.Component {
     POWERMODE.shake = false; // turn off shake
     document.body.addEventListener('input', POWERMODE);
 
-    let id = this.props.match.params.id
-    id = Number(id)
+    let id = this.props.match.params.id;
+    id = Number(id);
     this.props.dispatch({
-      type: "article/articleDetail",
+      type: 'article/articleDetail',
       payload: {
-        id
-      }
+        id,
+      },
     });
   }
 
   render() {
     const { article } = this.props.article;
-    let detail = article.detail
-    const content = Utils.MdtoHtml(detail.Content)
+    let detail = article.detail;
+    const content = Utils.MdtoHtml(detail.Content);
     return (
       <div>
-        <div dangerouslySetInnerHTML={{ __html: content }} ></div>
+        <div dangerouslySetInnerHTML={{ __html: content }}></div>
         <TextArea rows={4} style={{ marginTop: 20 }} />
       </div>
     );
   }
 }
 
-export default Article
+export default Article;

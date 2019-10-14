@@ -1,14 +1,14 @@
 [
-    {
-        "key": 1,
-        "link": "/",
-        "icon": "home",
-        "title": "主页"
-    },
-    {
-        "key": 2,
-        "link": "/github",
-        "icon": "github",
-        "title": "Github"
-    }
+  {
+    "key": 1,
+    "link": "/",
+    "icon": "home",
+    "title": "主页"
+  },
+  {
+    "key": 2,
+    "link": "/github",
+    "icon": "question",
+    "title": "未知"
+  }
 ]
