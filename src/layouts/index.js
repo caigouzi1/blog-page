@@ -35,7 +35,7 @@ export default class Home extends React.Component {
               />
             </Header>
             <Card className="content">
-              <Content style={{ maxWidth: 900, margin: 'auto' }}>{this.props.children}</Content>
+              <Content>{this.props.children}</Content>
             </Card>
             <Footer>兴趣使然</Footer>
           </Layout>

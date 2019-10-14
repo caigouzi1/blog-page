@@ -7,4 +7,7 @@ export default {
   async queryArticleDetail(params) {
     return await post('/article/one', params);
   },
+  async queryArticleCategoryList(params) {
+    return await post('/article/categorylist', params);
+  },
 };

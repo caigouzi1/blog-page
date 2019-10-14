@@ -1,4 +1,4 @@
-import { Card, Icon } from 'antd';
+import { Card, Icon, Empty } from 'antd';
 import React from 'react';
 import moment from 'moment';
 import { Link } from 'dva/router';
@@ -16,7 +16,7 @@ export default class TitleList extends React.Component {
   };
   getList(list) {
     if (list === undefined) {
-      return '';
+      return <Empty image={Empty.PRESENTED_IMAGE_SIMPLE} style={{ marginTop: 200 }} />;
     }
     moment.locale('zh-cn');
     return list.map(item => {
@@ -33,12 +33,20 @@ export default class TitleList extends React.Component {
             style={{ position: 'relative', margin: 15, fontSize: 18 }}
           >
             <div style={{ fontSize: 23, marginBottom: 5 }}>
-              <b>{item.Title}</b>
+              <h2>{item.Title}</h2>
             </div>
             {abstract}
-            <div style={{ marginTop: 20, height: 16, bottom: 0, fontSize: 16, color: '#a9b0bc' }}>
+            <div
+              style={{
+                marginTop: 5,
+                height: 16,
+                bottom: 0,
+                fontSize: 16,
+                color: '#a9b0bc',
+              }}
+            >
               <div style={{ position: 'absolute', right: 15 }}>
-                <span style={{ margin: 5 }}>
+                <span style={{ margin: 8 }}>
                   <Icon type="clock-circle" />
                 </span>
                 {moment(item.Timecreated).format('l')}

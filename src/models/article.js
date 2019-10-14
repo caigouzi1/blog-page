@@ -6,6 +6,7 @@ export default {
   state: {
     data: [],
     detail: {},
+    category: [],
   },
   reducers: {
     updata(state, action) {
@@ -14,6 +15,10 @@ export default {
 
     updataDetail(state, action) {
       return { ...state, detail: action.payload };
+    },
+
+    updataCategoryList(state, action) {
+      return { ...state, category: action.payload };
     },
 
     all(state) {
@@ -34,6 +39,14 @@ export default {
       const data = response;
       yield put({
         type: 'updataDetail',
+        payload: data,
+      });
+    },
+    *articleCategoryList({ payload }, { call, put }) {
+      const response = yield call(Api.queryArticleCategoryList, payload);
+      const data = response;
+      yield put({
+        type: 'updataCategoryList',
         payload: data,
       });
     },

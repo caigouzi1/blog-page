@@ -28,13 +28,13 @@ export default {
 
   //提取MarkDown的摘要
   getMdAbstract(content, title) {
-    const length = 350;
+    const length = 150;
     let str = this.MdtoHtml(content);
     str = this.removeHTMLTag(str);
     str = this.trim(str, title);
     if (str.length <= length) {
       return str;
     }
-    return str.substr(0, 350) + '...';
+    return str.substr(0, length) + '...';
   },
 };
