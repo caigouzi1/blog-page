@@ -3,6 +3,7 @@ import { connect } from 'dva';
 import { Input, Icon } from 'antd';
 import POWERMODE from '@/assets/js/activate-power-mode';
 import Utils from '@/utils/myTools';
+import ShowMarkDown from '@/components/ShowMarkDown/index';
 
 const { TextArea } = Input;
 
@@ -25,6 +26,13 @@ class Article extends React.Component {
       },
     });
   }
+
+  componentWillUnmount() {
+    this.props.dispatch({
+      type: 'article/clearDetail',
+    });
+  }
+
   goBack = () => {
     this.props.history.goBack();
   };
@@ -44,7 +52,7 @@ class Article extends React.Component {
           <Icon type="arrow-left" style={{ fontSize: 30 }} />
           <div style={{ display: 'inline-block', marginLeft: 3 }}>返回目录</div>
         </div>
-        <div dangerouslySetInnerHTML={{ __html: content }}></div>
+        <ShowMarkDown content={detail.Content} />
         <TextArea rows={4} style={{ marginTop: 20 }} />
       </div>
     );

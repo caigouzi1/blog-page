@@ -24,6 +24,10 @@ export default {
     all(state) {
       return { data: state.data };
     },
+
+    clearDetail(state) {
+      return { ...state, detail: {} };
+    },
   },
   effects: {
     *articleAll({ payload }, { call, put }) {

@@ -26,9 +26,7 @@ class Article extends React.Component {
         <Col span={19}>
           <TitleList dataSource={article.data.Data}></TitleList>
         </Col>
-        <Col span={5} style={{ marginTop: 30, border: '1px solid #d3d3d3', borderRadius: 5 }}>
-          <h3 style={{ marginTop: 10 }}>标签</h3>
-          <hr />
+        <Col span={5} style={{ marginTop: 30 }}>
           <TagList />
         </Col>
       </Row>

@@ -27,7 +27,30 @@ export default {
     ],
   ],
   // routes :PageRoute,
+  // routes: [
+  //   {
+  //     path: '/',
+  //     component: '../layouts/index',
+  //     routes: [
+  //       { path: '/', component: './home' },
+  //       { path: '/github', component: './github' },
+  //       { path: '/article/:id', component: './article/detail' },
+  //       { path: '/edit', component: './admin/article/edit' },
+  //     ],
+  //   },
+  //   {
+  //     path: '/admin',
+  //     component: '../layouts/index',
+  //     routes: [{ path: '/article/edit', component: './admin/article/edit' }],
+  //   },
+  // ],
+
   routes: [
+    {
+      path: '/admin',
+      component: '../layouts/admin/index.js',
+      routes: [{ path: '/admin/article/edit', component: './admin/article/edit' }],
+    },
     {
       path: '/',
       component: '../layouts/index',
@@ -35,7 +58,6 @@ export default {
         { path: '/', component: './home' },
         { path: '/github', component: './github' },
         { path: '/article/:id', component: './article/detail' },
-        { path: '/article/edit', component: './article/edit' },
       ],
     },
   ],

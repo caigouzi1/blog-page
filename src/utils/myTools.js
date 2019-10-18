@@ -1,5 +1,7 @@
 /* global define */
-import ShowDown from 'showdown';
+import { Remarkable } from 'remarkable';
+import hljs from 'highlight.js';
+import 'highlight.js/styles/github.css';
 
 export default {
   // //去除字符串头尾的指定字符
@@ -21,9 +23,23 @@ export default {
 
   //MarkDown转HTML
   MdtoHtml(content) {
-    let converter = new ShowDown.Converter();
-    let text = converter.makeHtml(content);
-    return text;
+    const md = new Remarkable({
+      highlight: function(str, lang) {
+        if (lang && hljs.getLanguage(lang)) {
+          try {
+            return hljs.highlight(lang, str).value;
+          } catch (err) {}
+        }
+
+        try {
+          return hljs.highlightAuto(str).value;
+        } catch (err) {}
+
+        return ''; // use external default escaping
+      },
+    });
+    // const md = new Remarkable();
+    return md.render(content);
   },
 
   //提取MarkDown的摘要

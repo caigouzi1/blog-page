@@ -13,7 +13,7 @@
   },
   {
     "key": 3,
-    "link": "/article/edit",
+    "link": "/admin/article/edit",
     "icon": "edit",
     "title": "编辑内容"
   }
