@@ -8,7 +8,7 @@ export default class ShowMarkDown extends Component {
     return (
       <div
         className="mark"
-        style={{ code: { backgordColor: 'red' } }}
+        style={{ code: { backgordColor: 'red' }, height: '60%' }}
         dangerouslySetInnerHTML={{ __html: content }}
       />
     );

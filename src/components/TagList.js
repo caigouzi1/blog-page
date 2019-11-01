@@ -2,10 +2,19 @@ import React from 'react';
 import { connect } from 'dva';
 import { List, Tag } from 'antd';
 
+const { CheckableTag } = Tag;
+
 @connect(article => ({
   article,
 }))
 class TagList extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      checked: 0,
+    };
+  }
+
   componentDidMount() {
     this.props.dispatch({
       type: 'article/articleCategoryList',
@@ -13,6 +22,7 @@ class TagList extends React.Component {
   }
 
   handleClick = id => {
+    this.setState({ checked: id });
     this.props.dispatch({
       type: 'article/articleAll',
       payload: {
@@ -21,12 +31,15 @@ class TagList extends React.Component {
     });
   };
 
+  handleCheak = id => {
+    return this.state.checked == id ? true : false;
+  };
+
   getCategoryList = () => {
     const { category } = this.props.article.article;
     if (category.length != 0 && category[0].Title !== '全部') {
-      category.unshift({ Title: '全部' });
+      category.unshift({ Id: 0, Title: '全部' });
     }
-
     return (
       <List
         header="标签"
@@ -35,15 +48,15 @@ class TagList extends React.Component {
         dataSource={category}
         renderItem={item => (
           <List.Item>
-            <Tag
-              color="blue"
+            <CheckableTag
               style={{ fontSize: 14 }}
-              onClick={() => {
+              checked={this.handleCheak(item.Id)}
+              onChange={() => {
                 this.handleClick(item.Id);
               }}
             >
               {item.Title}
-            </Tag>
+            </CheckableTag>
           </List.Item>
         )}
       />

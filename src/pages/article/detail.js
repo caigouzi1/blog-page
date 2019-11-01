@@ -1,9 +1,11 @@
 import React from 'react';
 import { connect } from 'dva';
-import { Input, Icon } from 'antd';
+import { Input, Icon, Button, Row, Col, Affix } from 'antd';
 import POWERMODE from '@/assets/js/activate-power-mode';
 import Utils from '@/utils/myTools';
 import ShowMarkDown from '@/components/ShowMarkDown/index';
+import { Link } from 'dva/router';
+import GoBack from '@/components/GoBack';
 
 const { TextArea } = Input;
 
@@ -33,9 +35,6 @@ class Article extends React.Component {
     });
   }
 
-  goBack = () => {
-    this.props.history.goBack();
-  };
   render() {
     const backStyle = {
       position: 'relative',
@@ -43,17 +42,33 @@ class Article extends React.Component {
       fontSize: '20px',
       height: 30,
     };
+    const id = this.props.match.params.id;
     const { article } = this.props.article;
     let detail = article.detail;
     const content = Utils.MdtoHtml(detail.Content);
     return (
-      <div style={{ maxWidth: 900, margin: 'auto' }}>
-        <div onClick={this.goBack} style={backStyle}>
-          <Icon type="arrow-left" style={{ fontSize: 30 }} />
-          <div style={{ display: 'inline-block', marginLeft: 3 }}>返回目录</div>
+      <div>
+        <Row
+          type="flex"
+          justify="center"
+          style={{ width: '100%', position: 'fixed', top: 20, textAlign: 'center' }}
+        >
+          <Col span={4} style={{ marginTop: 5 }}>
+            <GoBack />
+          </Col>
+          <Col span={16}></Col>
+        </Row>
+        <Link to={'/admin/article/modify/' + id}>
+          <Affix offsetTop={500} style={{ position: 'absolute', right: '10%' }}>
+            <Button type="primary" ghost={true} shape="round" size="large">
+              编辑
+            </Button>
+          </Affix>
+        </Link>
+        <div style={{ maxWidth: 900, margin: 'auto' }}>
+          <ShowMarkDown content={detail.Content} />
+          <TextArea rows={4} style={{ marginTop: 20 }} />
         </div>
-        <ShowMarkDown content={detail.Content} />
-        <TextArea rows={4} style={{ marginTop: 20 }} />
       </div>
     );
   }

@@ -49,7 +49,10 @@ export default {
     {
       path: '/admin',
       component: '../layouts/admin/index.js',
-      routes: [{ path: '/admin/article/edit', component: './admin/article/edit' }],
+      routes: [
+        { path: '/admin/article/edit', component: './admin/article/edit' },
+        { path: '/admin/article/modify/:id', component: './admin/article/modify' },
+      ],
     },
     {
       path: '/',

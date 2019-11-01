@@ -10,11 +10,5 @@
     "link": "/github",
     "icon": "question",
     "title": "未知"
-  },
-  {
-    "key": 3,
-    "link": "/admin/article/edit",
-    "icon": "edit",
-    "title": "编辑内容"
   }
 ]

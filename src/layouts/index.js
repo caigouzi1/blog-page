@@ -3,12 +3,13 @@ import React from 'react';
 import avatar from '@/assets/image/avatar.jpg';
 import './index.less';
 import Nav from './Nav';
+import HeaderUser from '@/components/HeaderUser';
 
 const { Header, Footer, Sider, Content } = Layout;
 
 export default class Home extends React.Component {
   state = {
-    collapsed: false,
+    collapsed: true,
   };
   toggle = () => {
     this.setState({
@@ -31,8 +32,11 @@ export default class Home extends React.Component {
                 className="trigger"
                 type={this.state.collapsed ? 'menu-unfold' : 'menu-fold'}
                 onClick={this.toggle}
-                style={{ fontSize: 30, marginTop: 20, marginLeft: 20 }}
+                style={{ fontSize: 30, marginTop: 25, marginLeft: 20 }}
               />
+              <div style={{ float: 'right', marginRight: 40 }}>
+                <HeaderUser />
+              </div>
             </Header>
             <Card className="content">
               <Content>{this.props.children}</Content>
