@@ -3,7 +3,7 @@ import React from 'react';
 import avatar from '@/assets/image/avatar.jpg';
 import './index.less';
 import Nav from './Nav';
-import HeaderUser from '@/components/HeaderUser';
+import HeaderUser from '@/components/user/HeaderUser';
 
 const { Header, Footer, Sider, Content } = Layout;
 

@@ -61,14 +61,12 @@ class MarkDownEdit extends React.Component {
   handleEditScroll = e => {
     if (this.editEnable) {
       this.initScale();
-      console.log('edit');
       this.preview.scrollTop = this.edit.scrollTop * this.scale;
     }
   };
 
   handlePreviewScroll = e => {
     if (this.previewEnable) {
-      console.log('preview');
       this.initScale();
       this.edit.scrollTop = this.preview.scrollTop / this.scale;
     }

@@ -6,8 +6,15 @@ import Utils from '@/utils/myTools';
 import ShowMarkDown from '@/components/ShowMarkDown/index';
 import { Link } from 'dva/router';
 import GoBack from '@/components/GoBack';
+import LoginShow from '@/components/user/LoginShow';
 
 const { TextArea } = Input;
+
+const goBackStyle = {
+  position: 'fixed',
+  left: '250px',
+  top: '25px',
+};
 
 @connect(article => ({
   article,
@@ -48,23 +55,20 @@ class Article extends React.Component {
     const content = Utils.MdtoHtml(detail.Content);
     return (
       <div>
-        <Row
-          type="flex"
-          justify="center"
-          style={{ width: '100%', position: 'fixed', top: 20, textAlign: 'center' }}
-        >
-          <Col span={4} style={{ marginTop: 5 }}>
-            <GoBack />
-          </Col>
-          <Col span={16}></Col>
-        </Row>
-        <Link to={'/admin/article/modify/' + id}>
-          <Affix offsetTop={500} style={{ position: 'absolute', right: '10%' }}>
-            <Button type="primary" ghost={true} shape="round" size="large">
-              编辑
-            </Button>
-          </Affix>
-        </Link>
+        <div style={goBackStyle}>
+          <GoBack />
+        </div>
+
+        <LoginShow>
+          <Link to={'/admin/article/modify/' + id}>
+            <Affix offsetTop={500} style={{ position: 'absolute', right: '10%' }}>
+              <Button type="primary" ghost={true} shape="round" size="large">
+                编辑
+              </Button>
+            </Affix>
+          </Link>
+        </LoginShow>
+
         <div style={{ maxWidth: 900, margin: 'auto' }}>
           <ShowMarkDown content={detail.Content} />
           <TextArea rows={4} style={{ marginTop: 20 }} />

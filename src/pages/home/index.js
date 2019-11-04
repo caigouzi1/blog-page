@@ -4,6 +4,7 @@ import TitleList from '@/components/TitleList';
 import { Row, Col, Button, Icon, Affix } from 'antd';
 import TagList from '@/components/TagList';
 import { Link } from 'dva/router';
+import LoginShow from '@/components/user/LoginShow';
 
 @connect(article => ({
   article,
@@ -26,12 +27,14 @@ class Article extends React.Component {
       >
         <Col span={19}>
           <Row span={2}>
-            <Link to="/admin/article/edit/">
-              <Button type="primary" ghost={true} style={{ marginLeft: 20 }}>
-                <Icon type="plus" />
-                新增
-              </Button>
-            </Link>
+            <LoginShow>
+              <Link to="/admin/article/edit/">
+                <Button type="primary" ghost={true} style={{ marginLeft: 20 }}>
+                  <Icon type="plus" />
+                  新增
+                </Button>
+              </Link>
+            </LoginShow>
           </Row>
           <Row span={22} style={{ overflow: 'auto' }}>
             <TitleList dataSource={article.data.Data}></TitleList>
