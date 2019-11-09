@@ -15,6 +15,12 @@ class Article extends React.Component {
     });
   }
 
+  update() {
+    this.props.dispatch({
+      type: 'article/articleAll',
+    });
+  }
+
   render() {
     const { article } = this.props.article;
     return (
@@ -22,12 +28,23 @@ class Article extends React.Component {
         type="flex"
         justify="space-between"
         gutter={40}
-        style={{ maxWidth: 1200, margin: 'auto' }}
+        style={{ maxWidth: 1200, margin: '40px auto' }}
       >
         <Col span={19}>
-          <Row span={2}></Row>
+          <Row span={2}>
+            <Link to="/admin/article/edit/">
+              <Button type="primary" ghost={true} style={{ marginLeft: 20 }}>
+                <Icon type="plus" />
+                新增
+              </Button>
+            </Link>
+          </Row>
           <Row span={22} style={{ overflow: 'auto' }}>
-            <TitleList dataSource={article.data.Data}></TitleList>
+            <TitleList
+              editShowEnable={true}
+              dataSource={article.data.Data}
+              update={this.update.bind(this)}
+            ></TitleList>
           </Row>
         </Col>
         <Col span={5}>

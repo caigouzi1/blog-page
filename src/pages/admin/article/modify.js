@@ -22,13 +22,34 @@ class Modify extends React.Component {
         id,
       },
     });
+
     const { article } = this.props.article;
     let detail = article.detail;
-    this.setState({ content: detail.Content });
+
+    this.setState({
+      content: detail.Content,
+      id: detail.Id,
+      title: detail.Title,
+      category: detail.Category,
+      categoryTitle: detail.CategoryTitle,
+    });
   }
 
+  updataContent = e => {};
+
   render() {
-    return <MarkDownEdit content={this.state.content} />;
+    return (
+      <div>
+        <MarkDownEdit
+          content={this.state.content}
+          id={this.state.id}
+          title={this.state.title}
+          type={this.state.type}
+          categoryTitle={this.state.categoryTitle}
+          category={this.state.category}
+        />
+      </div>
+    );
   }
 }
 

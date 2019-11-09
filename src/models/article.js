@@ -1,4 +1,5 @@
 import Api from '../services/article';
+import { isError, showError, showSuccess } from '../utils/http';
 
 export default {
   namespace: 'article',
@@ -6,7 +7,7 @@ export default {
   state: {
     data: [],
     detail: {},
-    category: [],
+    category: [{ Id: 0, Title: '全部' }],
   },
   reducers: {
     updata(state, action) {
@@ -53,6 +54,22 @@ export default {
         type: 'updataCategoryList',
         payload: data,
       });
+    },
+    *articleEdit({ payload }, { call, put }) {
+      const response = yield call(Api.queryArticleEdit, payload);
+      if (isError(response)) {
+        showError(response);
+      } else {
+        showSuccess('编辑文章成功');
+      }
+    },
+    *articleDelete({ payload }, { call, put }) {
+      const response = yield call(Api.queryArticleDelete, payload);
+      if (isError(response)) {
+        showError(response);
+      } else {
+        showSuccess('删除文章成功');
+      }
     },
   },
 };

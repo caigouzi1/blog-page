@@ -35,9 +35,13 @@ class TagList extends React.Component {
     return this.state.checked == id ? true : false;
   };
 
+  isArray(o) {
+    return Object.prototype.toString.call(o) == '[object Array]';
+  }
+
   getCategoryList = () => {
-    const { category } = this.props.article.article;
-    if (category.length != 0 && category[0].Title !== '全部') {
+    let { category } = this.props.article.article;
+    if (this.isArray(category) && category.length != 0 && category[0].Title !== '全部') {
       category.unshift({ Id: 0, Title: '全部' });
     }
     return (

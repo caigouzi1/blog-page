@@ -6,7 +6,7 @@ class Edit extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      content: '### 请输入你要填写的内容',
+      content: '',
     };
   }
 

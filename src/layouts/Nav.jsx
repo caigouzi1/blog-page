@@ -1,17 +1,32 @@
 import { Menu, Icon } from 'antd';
-import React from 'react';
+import React, { Component } from 'react';
 import { Link } from 'dva/router';
+import { connect } from 'dva';
 import NavList from './NavList.json';
 
-export default class Nav extends React.Component {
-  handleClick = e => {
-    console.log('click ', e);
-  };
+@connect(user => ({
+  user,
+}))
+class Nav extends Component {
+  handleClick = e => {};
 
   // 菜单渲染
   renderMenu = data => {
+    const { user } = this.props.user;
+    const isLogin = user.data.length === 0 ? false : true;
     return data.map(item => {
-      return (
+      return item.isAdmin ? (
+        isLogin ? (
+          <Menu.Item key={item.key}>
+            <Link to={item.link}>
+              <Icon type={item.icon} />
+              <span>{item.title}</span>
+            </Link>
+          </Menu.Item>
+        ) : (
+          ''
+        )
+      ) : (
         <Menu.Item key={item.key}>
           <Link to={item.link}>
             <Icon type={item.icon} />
@@ -51,3 +66,5 @@ export default class Nav extends React.Component {
     );
   }
 }
+
+export default Nav;

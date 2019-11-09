@@ -3,12 +3,14 @@
     "key": 1,
     "link": "/",
     "icon": "home",
-    "title": "主页"
+    "title": "主页",
+    "isAdmin": false
   },
   {
     "key": 2,
-    "link": "/github",
-    "icon": "question",
-    "title": "未知"
+    "link": "/admin/list",
+    "icon": "user",
+    "title": "管理员",
+    "isAdmin": true
   }
 ]

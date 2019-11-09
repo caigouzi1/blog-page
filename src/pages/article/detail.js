@@ -6,7 +6,6 @@ import Utils from '@/utils/myTools';
 import ShowMarkDown from '@/components/ShowMarkDown/index';
 import { Link } from 'dva/router';
 import GoBack from '@/components/GoBack';
-import LoginShow from '@/components/user/LoginShow';
 
 const { TextArea } = Input;
 
@@ -58,17 +57,6 @@ class Article extends React.Component {
         <div style={goBackStyle}>
           <GoBack />
         </div>
-
-        <LoginShow>
-          <Link to={'/admin/article/modify/' + id}>
-            <Affix offsetTop={500} style={{ position: 'absolute', right: '10%' }}>
-              <Button type="primary" ghost={true} shape="round" size="large">
-                编辑
-              </Button>
-            </Affix>
-          </Link>
-        </LoginShow>
-
         <div style={{ maxWidth: 900, margin: 'auto' }}>
           <ShowMarkDown content={detail.Content} />
           <TextArea rows={4} style={{ marginTop: 20 }} />
