@@ -8,6 +8,13 @@
   },
   {
     "key": 2,
+    "link": "/game/list",
+    "myIcon": "game",
+    "title": "游戏",
+    "isAdmin": false
+  },
+  {
+    "key": 3,
     "link": "/admin/list",
     "icon": "user",
     "title": "管理员",

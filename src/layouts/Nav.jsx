@@ -4,6 +4,10 @@ import { Link } from 'dva/router';
 import { connect } from 'dva';
 import NavList from './NavList.json';
 
+const MyIcon = Icon.createFromIconfontCN({
+  scriptUrl: '//at.alicdn.com/t/font_1517570_woj0eqaff5.js', // 在 iconfont.cn 上生成
+});
+
 @connect(user => ({
   user,
 }))
@@ -15,11 +19,17 @@ class Nav extends Component {
     const { user } = this.props.user;
     const isLogin = user.data.length === 0 ? false : true;
     return data.map(item => {
+      let titleIcon = item.icon ? (
+        <Icon type={item.icon} />
+      ) : (
+        <MyIcon type={'icon-' + item.myIcon} />
+      );
+      console.log(titleIcon);
       return item.isAdmin ? (
         isLogin ? (
           <Menu.Item key={item.key}>
             <Link to={item.link}>
-              <Icon type={item.icon} />
+              {titleIcon}
               <span>{item.title}</span>
             </Link>
           </Menu.Item>
@@ -29,7 +39,7 @@ class Nav extends Component {
       ) : (
         <Menu.Item key={item.key}>
           <Link to={item.link}>
-            <Icon type={item.icon} />
+            {titleIcon}
             <span>{item.title}</span>
           </Link>
         </Menu.Item>

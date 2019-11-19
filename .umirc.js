@@ -3,6 +3,9 @@ const PageRoute = Routes.Routes;
 
 export default {
   treeShaking: true,
+  history: 'hash', //路由带#号
+  // base: '/blog/', //服务器二级页面
+  // publicPath: '/blog/', //服务器二级页面静态资源
   plugins: [
     // ref: https://umijs.org/plugin/umi-plugin-react.html
     [
@@ -51,6 +54,7 @@ export default {
       component: '../layouts/admin/index.js',
       routes: [
         { path: '/admin/login', component: './admin/login' },
+        { path: '/admin/list', component: './admin/article/list' },
         { path: '/admin/article/edit', component: './admin/article/edit' },
         { path: '/admin/article/modify/:id', component: './admin/article/modify' },
       ],
@@ -62,24 +66,17 @@ export default {
         { path: '/', component: './home' },
         { path: '/github', component: './github' },
         { path: '/article/:id', component: './article/detail' },
+        { path: '/game/list', component: './game/list' },
       ],
     },
   ],
 
-  proxy: {
-    '/blog': {
-      target: 'http://172.16.1.22:8080/blog',
-      changeOrigin: true,
-      pathRewrite: { '^/blog': '' },
-    },
-  },
-
-  // "proxy": {
-  //   "/dock": {
-  //     "target": "http://172.16.1.22:80/dock",
-  //     "changeOrigin": true,
-  //     "pathRewrite": {"^/dock": ""}
-  //   }
+  // proxy: {
+  //   '/blogApi': {
+  //     target: 'http://blog.elpsycongroo.xyz',
+  //     changeOrigin: true,
+  //     pathRewrite: { '^/blogApi': '/blogApi' },
+  //   },
   // },
 
   theme: {

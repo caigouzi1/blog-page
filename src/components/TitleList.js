@@ -16,9 +16,9 @@ class TitleList extends Component {
   }
 
   //删除文章
-  handleDeleteClick(item, e) {
+  async handleDeleteClick(item, e) {
     e.stopPropagation();
-    this.props.dispatch({
+    await this.props.dispatch({
       type: 'article/articleDelete',
       payload: { id: item.Id },
     });

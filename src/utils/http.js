@@ -1,7 +1,13 @@
 import axios from 'axios';
+import { notification } from 'antd';
 
 axios.defaults.timeout = 5000;
-axios.defaults.baseURL = '/blog';
+
+//服务器使用
+// axios.defaults.baseURL = '/blog/';
+
+axios.defaults.baseURL = '/blogApi/';
+// axios.defaults.baseURL = 'http://49.232.166.52/blogApi/';
 
 //http request 拦截器
 axios.interceptors.request.use(
@@ -13,25 +19,19 @@ axios.interceptors.request.use(
     };
     return config;
   },
+  response => {
+    if (response.status === 401) {
+      notification.error({
+        message: '登录已失效',
+        description: '登录已失效，请重新验证登录信息',
+      });
+    }
+    return response;
+  },
   error => {
     return Promise.reject(error);
   },
 );
-// //http response 拦截器
-// axios.interceptors.response.use(
-//   response => {
-//     if (response.data.errCode == 2) {
-//       router.push({
-//         path: "/login",
-//         querry: { redirect: router.currentRoute.fullPath } //从哪个页面跳转
-//       });
-//     }
-//     return response;
-//   },
-//   error => {
-//     return Promise.reject(error);
-//   }
-// );
 /**
  * 封装get方法
  * @param url
@@ -58,7 +58,6 @@ export function fetch(url, params = {}) {
  * @returns {Promise}
  */
 export function post(url, data = {}) {
-  console.log(data);
   return new Promise((resolve, reject) => {
     axios.post(url, data).then(
       response => {
@@ -107,5 +106,25 @@ export function put(url, data = {}) {
         reject(err);
       },
     );
+  });
+}
+
+export function isError(response) {
+  if (response && response.errCode && response.errCode !== 0) return true;
+  return false;
+}
+
+export function showError(response) {
+  notification.error({
+    message: '操作失败',
+    description: response.errMsg,
+  });
+}
+
+export function showSuccess(description = '操作成功') {
+  console.log('操作成功');
+  notification.success({
+    message: '操作成功',
+    description: description,
   });
 }
