@@ -141,7 +141,6 @@ class MarkDownEdit extends React.Component {
     const defaultContent = this.state.content;
     const { article } = this.props.article;
     const category = article.category;
-    console.log(this.state.categoryTitle);
     return (
       <div>
         <InputGroup compact style={{ maxWidth: '50%', margin: '40px auto 0px' }}>

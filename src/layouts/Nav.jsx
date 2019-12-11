@@ -1,6 +1,6 @@
 import { Menu, Icon } from 'antd';
 import React, { Component } from 'react';
-import { Link } from 'dva/router';
+import { Link, withRouter } from 'dva/router';
 import { connect } from 'dva';
 import NavList from './NavList.json';
 
@@ -14,6 +14,18 @@ const MyIcon = Icon.createFromIconfontCN({
 class Nav extends Component {
   handleClick = e => {};
 
+  getCurrentNav = () => {
+    const url = this.props.location.pathname;
+    let retKey = '1';
+    for (let i = NavList.length - 1; i >= 0; i--) {
+      let reg = new RegExp(`^${NavList[i].link}`);
+      if (reg.test(url)) {
+        return (retKey = NavList[i].key.toString());
+      }
+    }
+    return retKey;
+  };
+
   // 菜单渲染
   renderMenu = data => {
     const { user } = this.props.user;
@@ -24,7 +36,6 @@ class Nav extends Component {
       ) : (
         <MyIcon type={'icon-' + item.myIcon} />
       );
-      console.log(titleIcon);
       return item.isAdmin ? (
         isLogin ? (
           <Menu.Item key={item.key}>
@@ -55,11 +66,11 @@ class Nav extends Component {
   }
 
   render() {
+    const getCurrentNavKey = this.getCurrentNav();
     return (
       <Menu
         onClick={this.handleClick}
-        defaultSelectedKeys={['1']}
-        defaultOpenKeys={['sub1']}
+        defaultSelectedKeys={[getCurrentNavKey]}
         mode="inline"
         theme="dark"
       >
@@ -77,4 +88,4 @@ class Nav extends Component {
   }
 }
 
-export default Nav;
+export default withRouter(Nav);

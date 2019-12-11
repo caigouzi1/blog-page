@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Helmet } from 'react-helmet';
 import { connect } from 'dva';
 import { Icon, Input, Button, Form } from 'antd';
 import styles from './login.less';
@@ -30,6 +31,9 @@ class Login extends Component {
 
     return (
       <Form className={styles.content} onSubmit={this.handleLogin}>
+        <Helmet>
+          <title>登录</title>
+        </Helmet>
         <h2>用户登录</h2>
         <li>
           <Form.Item>

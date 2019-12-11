@@ -1,6 +1,7 @@
 import { Layout, Icon, Card, Avatar } from 'antd';
 import React from 'react';
-import avatar from '@/assets/image/avatar.jpg';
+import logo from '@/assets/image/logo.ico';
+import { Helmet } from 'react-helmet';
 import './index.less';
 import Nav from './Nav';
 import HeaderUser from '@/components/user/HeaderUser';
@@ -19,10 +20,14 @@ export default class Home extends React.Component {
   render() {
     return (
       <div>
+        <Helmet>
+          <link rel="icon" href={logo} />
+          <title>个人博客</title>
+        </Helmet>
         <Layout>
           <Sider className="sider" trigger={null} collapsible collapsed={this.state.collapsed}>
             <div className="logo">
-              <Avatar size={64} src={avatar} />
+              <Avatar size={56} src={logo} />
             </div>
             <Nav />
           </Sider>

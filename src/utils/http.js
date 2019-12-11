@@ -4,10 +4,7 @@ import { notification } from 'antd';
 axios.defaults.timeout = 5000;
 
 //服务器使用
-// axios.defaults.baseURL = '/blog/';
-
 axios.defaults.baseURL = '/blogApi/';
-// axios.defaults.baseURL = 'http://49.232.166.52/blogApi/';
 
 //http request 拦截器
 axios.interceptors.request.use(

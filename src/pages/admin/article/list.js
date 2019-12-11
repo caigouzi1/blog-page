@@ -1,4 +1,5 @@
 import React from 'react';
+import { Helmet } from 'react-helmet';
 import { connect } from 'dva';
 import TitleList from '@/components/TitleList';
 import { Row, Col, Button, Icon, Affix } from 'antd';
@@ -30,6 +31,9 @@ class Article extends React.Component {
         gutter={40}
         style={{ maxWidth: 1200, margin: '40px auto' }}
       >
+        <Helmet>
+          <title>文章列表</title>
+        </Helmet>
         <Col span={19}>
           <Row span={2}>
             <Link to="/admin/article/edit/">

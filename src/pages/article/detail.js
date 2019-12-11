@@ -1,4 +1,5 @@
 import React from 'react';
+import { Helmet } from 'react-helmet';
 import { connect } from 'dva';
 import { Input, Icon, Button, Row, Col, Affix } from 'antd';
 import POWERMODE from '@/assets/js/activate-power-mode';
@@ -54,6 +55,9 @@ class Article extends React.Component {
     const content = Utils.MdtoHtml(detail.Content);
     return (
       <div>
+        <Helmet>
+          <title>{detail.Title}</title>
+        </Helmet>
         <div style={goBackStyle}>
           <GoBack />
         </div>

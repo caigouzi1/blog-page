@@ -71,13 +71,13 @@ export default {
     },
   ],
 
-  // proxy: {
-  //   '/blogApi': {
-  //     target: 'http://blog.elpsycongroo.xyz',
-  //     changeOrigin: true,
-  //     pathRewrite: { '^/blogApi': '/blogApi' },
-  //   },
-  // },
+  proxy: {
+    '/blogApi': {
+      target: 'http://blog.elpsycongroo.xyz',
+      changeOrigin: true,
+      pathRewrite: { '^/blogApi': '/blogApi' },
+    },
+  },
 
   theme: {
     'primary-color': '#1DA57A',

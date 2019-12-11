@@ -1,4 +1,5 @@
 import React from 'react';
+import { Helmet } from 'react-helmet';
 import MarkDownEdit from '@/components/MarkDownEdit';
 import { connect } from 'dva';
 
@@ -40,6 +41,9 @@ class Modify extends React.Component {
   render() {
     return (
       <div>
+        <Helmet>
+          <title>修改文章</title>
+        </Helmet>
         <MarkDownEdit
           content={this.state.content}
           id={this.state.id}

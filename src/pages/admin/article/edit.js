@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'dva';
 import MarkDownEdit from '@/components/MarkDownEdit';
+import { Helmet } from 'react-helmet';
 
 class Edit extends React.Component {
   constructor(props) {
@@ -13,7 +14,14 @@ class Edit extends React.Component {
   componentDidMount() {}
 
   render() {
-    return <MarkDownEdit />;
+    return (
+      <div>
+        <Helmet>
+          <title>编辑</title>
+        </Helmet>
+        <MarkDownEdit />
+      </div>
+    );
   }
 }
 

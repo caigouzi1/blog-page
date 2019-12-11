@@ -1,12 +1,16 @@
 import React from 'react';
 import { Typography, Row, Col, Card } from 'antd';
-
+import HeaderUser from '@/components/user/HeaderUser';
+import { Helmet } from 'react-helmet';
 const { Title, Text } = Typography;
 
 export default class Test extends React.Component {
   render() {
     return (
       <div style={{ maxWidth: 900, margin: 'auto' }}>
+        <Helmet>
+          <title>游戏列表</title>
+        </Helmet>
         <Title level={3}>游戏列表</Title>
         <Row type="flex" justify="space-between" align="bottom">
           <Col span={11}>
