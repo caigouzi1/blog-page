@@ -10,16 +10,8 @@ export default {
     category: [{ Id: 0, Title: '全部' }],
   },
   reducers: {
-    updata(state, action) {
-      return { ...state, data: action.payload };
-    },
-
-    updataDetail(state, action) {
-      return { ...state, detail: action.payload };
-    },
-
-    updataCategoryList(state, action) {
-      return { ...state, category: action.payload };
+    setState(state, { payload }) {
+      return { ...state, ...payload };
     },
 
     all(state) {
@@ -33,27 +25,33 @@ export default {
   effects: {
     *articleAll({ payload }, { call, put }) {
       const response = yield call(Api.queryArticleAll, payload);
-      const data = response;
-      yield put({
-        type: 'updata',
-        payload: data,
-      });
+      const data = response.data;
+      if (response.errCode === 0) {
+        yield put({
+          type: 'setState',
+          payload: { data: data },
+        });
+      }
     },
     *articleDetail({ payload }, { call, put }) {
       const response = yield call(Api.queryArticleDetail, payload);
-      const data = response;
-      yield put({
-        type: 'updataDetail',
-        payload: data,
-      });
+      const data = response.data;
+      if (response.errCode === 0) {
+        yield put({
+          type: 'setState',
+          payload: { detail: data },
+        });
+      }
     },
     *articleCategoryList({ payload }, { call, put }) {
       const response = yield call(Api.queryArticleCategoryList, payload);
-      const data = response;
-      yield put({
-        type: 'updataCategoryList',
-        payload: data,
-      });
+      const data = response.data;
+      if (response.errCode === 0) {
+        yield put({
+          type: 'setState',
+          payload: { category: data },
+        });
+      }
     },
     *articleEdit({ payload }, { call, put }) {
       const response = yield call(Api.queryArticleEdit, payload);

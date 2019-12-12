@@ -24,6 +24,7 @@ class Article extends React.Component {
 
   render() {
     const { article } = this.props.article;
+    console.log(article);
     return (
       <Row
         type="flex"

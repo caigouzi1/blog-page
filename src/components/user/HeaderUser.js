@@ -8,6 +8,20 @@ import { Link } from 'dva/router';
   user,
 }))
 class HeaderUser extends Component {
+  componentDidMount() {
+    this.props.dispatch({
+      type: 'user/userCurrent',
+      payload: {},
+    });
+  }
+
+  handleLogout() {
+    this.props.dispatch({
+      type: 'user/userLogout',
+      payload: {},
+    });
+  }
+
   createDom = () => {
     const { user } = this.props.user;
     return user.data.length === 0 ? (
@@ -25,7 +39,10 @@ class HeaderUser extends Component {
     ) : (
       <div style={{ marginTop: 5 }}>
         <Avatar size="large" src={avatar} />
-        <span style={{ marginLeft: 10 }}>Lebmem No.001</span>
+        <span style={{ marginLeft: 10 }}>{user.data.Nickname}</span>
+        <Button onClick={this.handleLogout()} type="primary" style={{ marginLeft: 15 }}>
+          退出
+        </Button>
       </div>
     );
   };

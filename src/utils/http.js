@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { notification } from 'antd';
+import qs from 'qs';
 
 axios.defaults.timeout = 5000;
 
@@ -9,10 +10,10 @@ axios.defaults.baseURL = '/blogApi/';
 //http request 拦截器
 axios.interceptors.request.use(
   config => {
-    //const token = getCookie('名称');
-    config.data = JSON.stringify(config.data);
+    // config.data = JSON.stringify(config.data);
+    config.data = qs.stringify(config.data); // 转为formdata数据格式
     config.headers = {
-      'Content-Type': 'application/json',
+      'Content-Type': 'application/x-www-form-urlencoded',
     };
     return config;
   },

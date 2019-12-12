@@ -71,9 +71,16 @@ export default {
     },
   ],
 
+  // proxy: {
+  //   '/blogApi': {
+  //     target: 'http://blog.elpsycongroo.xyz',
+  //     changeOrigin: true,
+  //     pathRewrite: { '^/blogApi': '/blogApi' },
+  //   },
+  // },
   proxy: {
     '/blogApi': {
-      target: 'http://blog.elpsycongroo.xyz',
+      target: 'http://127.0.0.1:8080',
       changeOrigin: true,
       pathRewrite: { '^/blogApi': '/blogApi' },
     },

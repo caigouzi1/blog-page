@@ -12,7 +12,13 @@ const MyIcon = Icon.createFromIconfontCN({
   user,
 }))
 class Nav extends Component {
+  state = [];
   handleClick = e => {};
+
+  isLogin = () => {
+    const { user } = this.props.user;
+    return user.data.length === 0 ? false : true;
+  };
 
   getCurrentNav = () => {
     const url = this.props.location.pathname;
@@ -28,8 +34,7 @@ class Nav extends Component {
 
   // 菜单渲染
   renderMenu = data => {
-    const { user } = this.props.user;
-    const isLogin = user.data.length === 0 ? false : true;
+    const isLogin = this.isLogin();
     return data.map(item => {
       let titleIcon = item.icon ? (
         <Icon type={item.icon} />
@@ -58,12 +63,21 @@ class Nav extends Component {
     });
   };
 
-  componentWillMount() {
+  async componentDidMount() {
+    if (!this.isLogin()) {
+      await this.props.dispatch({
+        type: 'user/userCurrent',
+        payload: {},
+      });
+    }
+
     const menuTreeNode = this.renderMenu(NavList);
     this.setState({
       menuTreeNode,
     });
   }
+
+  async componentWillMount() {}
 
   render() {
     const getCurrentNavKey = this.getCurrentNav();
