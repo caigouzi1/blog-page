@@ -12,7 +12,7 @@ const MyIcon = Icon.createFromIconfontCN({
   user,
 }))
 class Nav extends Component {
-  state = [];
+  state = {};
   handleClick = e => {};
 
   isLogin = () => {

@@ -8,23 +8,46 @@ import { Link } from 'dva/router';
   user,
 }))
 class HeaderUser extends Component {
-  componentDidMount() {
-    this.props.dispatch({
+  state = { header: null };
+  async componentDidMount() {
+    await this.props.dispatch({
       type: 'user/userCurrent',
       payload: {},
     });
-  }
 
-  handleLogout() {
-    this.props.dispatch({
-      type: 'user/userLogout',
-      payload: {},
+    const header = this.createDom();
+    this.setState({
+      header,
     });
   }
 
+  handleLogout = async () => {
+    await this.props.dispatch({
+      type: 'user/userLogout',
+      payload: {},
+    });
+
+    //重新加载页面
+    window.location.reload();
+  };
+
+  isLogin = () => {
+    const { user } = this.props.user;
+    return user.data.length === 0 ? false : true;
+  };
+
   createDom = () => {
     const { user } = this.props.user;
-    return user.data.length === 0 ? (
+    const isLogin = this.isLogin();
+    return isLogin ? (
+      <div style={{ marginTop: 5 }}>
+        <Avatar size="large" src={avatar} />
+        <span style={{ marginLeft: 10 }}>{user.data.Nickname}</span>
+        <Button onClick={this.handleLogout} type="primary" style={{ marginLeft: 15 }}>
+          退出
+        </Button>
+      </div>
+    ) : (
       <Link to="/admin/login">
         <Button
           type="primary"
@@ -36,19 +59,11 @@ class HeaderUser extends Component {
           login
         </Button>
       </Link>
-    ) : (
-      <div style={{ marginTop: 5 }}>
-        <Avatar size="large" src={avatar} />
-        <span style={{ marginLeft: 10 }}>{user.data.Nickname}</span>
-        <Button onClick={this.handleLogout()} type="primary" style={{ marginLeft: 15 }}>
-          退出
-        </Button>
-      </div>
     );
   };
 
   render() {
-    return <span>{this.createDom()} </span>;
+    return <span>{this.state.header} </span>;
   }
 }
 
