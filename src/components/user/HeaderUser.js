@@ -27,8 +27,8 @@ class HeaderUser extends Component {
       payload: {},
     });
 
-    //重新加载页面
-    window.location.reload();
+    //重新加载页面(废弃已优化)
+    // window.location.reload();
   };
 
   isLogin = () => {
@@ -63,7 +63,7 @@ class HeaderUser extends Component {
   };
 
   render() {
-    return <span>{this.state.header} </span>;
+    return <span>{this.createDom()} </span>;
   }
 }
 

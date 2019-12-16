@@ -12,7 +12,6 @@ const MyIcon = Icon.createFromIconfontCN({
   user,
 }))
 class Nav extends Component {
-  state = {};
   handleClick = e => {};
 
   isLogin = () => {
@@ -63,24 +62,20 @@ class Nav extends Component {
     });
   };
 
-  async componentDidMount() {
+  async componentWillMount() {
     if (!this.isLogin()) {
       await this.props.dispatch({
         type: 'user/userCurrent',
         payload: {},
       });
     }
-
-    const menuTreeNode = this.renderMenu(NavList);
-    this.setState({
-      menuTreeNode,
-    });
   }
 
   async componentWillMount() {}
 
   render() {
     const getCurrentNavKey = this.getCurrentNav();
+    const menuTree = this.renderMenu(NavList);
     return (
       <Menu
         onClick={this.handleClick}
@@ -88,7 +83,7 @@ class Nav extends Component {
         mode="inline"
         theme="dark"
       >
-        {this.state.menuTreeNode}
+        {menuTree}
         <Menu theme="dark" selectable={false} style={{ position: 'absolute', bottom: 20 }}>
           <Menu.Item style={{ fontSize: 16 }}>
             <a href="https://github.com/caigouzi1" target="_blank">

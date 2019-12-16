@@ -41,7 +41,7 @@ export default {
       if (!isError(response)) {
         yield put({
           type: 'updata',
-          payload: { data: {} },
+          payload: { data: [] },
         });
       }
     },

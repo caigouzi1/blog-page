@@ -1,4 +1,4 @@
-import { Card, Icon, Empty, Row, Col, Button } from 'antd';
+import { Card, Icon, Empty, Row, Col, Button, Pagination } from 'antd';
 import React, { Component } from 'react';
 import moment from 'moment';
 import { Link, withRouter } from 'dva/router';
@@ -9,6 +9,41 @@ import { connect } from 'dva';
   article,
 }))
 class TitleList extends Component {
+  state = {
+    pageIndex: 1,
+    pageSize: 10,
+  };
+
+  componentWillMount() {
+    this.props.dispatch({
+      type: 'article/articleAll',
+      payload: this.state,
+    });
+  }
+
+  fetch = () => {
+    this.props.dispatch({
+      type: 'article/articleAll',
+      payload: this.state,
+    });
+  };
+
+  handleChangePage = async (page, pageSize) => {
+    await this.setState({
+      pageIndex: page,
+      pageSize: pageSize,
+    });
+    this.fetch();
+  };
+
+  onShowSizeChange = async (current, pageSize) => {
+    await this.setState({
+      pageIndex: current,
+      pageSize: pageSize,
+    });
+    this.fetch();
+  };
+
   //进入编辑页面
   handleEditClick(item, e) {
     e.stopPropagation();
@@ -95,7 +130,25 @@ class TitleList extends Component {
   }
 
   render() {
-    return <div>{this.getList(this.props.dataSource)}</div>;
+    const { article } = this.props.article;
+    const dataSet = article.data;
+
+    return (
+      <div>
+        {this.getList(dataSet.Data)}
+        <Pagination
+          style={{ textAlign: 'center' }}
+          hideOnSinglePage
+          pageSize={this.state.pageSize}
+          total={dataSet.Total}
+          current={this.state.pageIndex}
+          onShowSizeChange={this.onShowSizeChange}
+          showSizeChanger
+          showQuickJumper
+          onChange={this.handleChangePage}
+        />
+      </div>
+    );
   }
 }
 

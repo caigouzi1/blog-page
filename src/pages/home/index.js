@@ -10,14 +10,7 @@ import { Link } from 'dva/router';
   article,
 }))
 class Article extends React.Component {
-  componentDidMount() {
-    this.props.dispatch({
-      type: 'article/articleAll',
-    });
-  }
-
   render() {
-    const { article } = this.props.article;
     return (
       <Row
         type="flex"
@@ -31,7 +24,7 @@ class Article extends React.Component {
         <Col span={19}>
           <Row span={2}></Row>
           <Row span={22} style={{ overflow: 'auto' }}>
-            <TitleList dataSource={article.data.Data}></TitleList>
+            <TitleList />
           </Row>
         </Col>
         <Col span={5}>

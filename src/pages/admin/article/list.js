@@ -10,12 +10,6 @@ import { Link } from 'dva/router';
   article,
 }))
 class Article extends React.Component {
-  componentDidMount() {
-    this.props.dispatch({
-      type: 'article/articleAll',
-    });
-  }
-
   update() {
     this.props.dispatch({
       type: 'article/articleAll',
@@ -45,11 +39,7 @@ class Article extends React.Component {
             </Link>
           </Row>
           <Row span={22} style={{ overflow: 'auto' }}>
-            <TitleList
-              editShowEnable={true}
-              dataSource={article.data.Data}
-              update={this.update.bind(this)}
-            ></TitleList>
+            <TitleList editShowEnable={true} update={this.update.bind(this)}></TitleList>
           </Row>
         </Col>
         <Col span={5}>

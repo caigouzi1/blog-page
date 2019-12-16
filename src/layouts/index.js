@@ -1,10 +1,11 @@
-import { Layout, Icon, Card, Avatar } from 'antd';
+import { Layout, Icon, Card, Avatar, ConfigProvider } from 'antd';
 import React from 'react';
 import logo from '@/assets/image/logo.ico';
 import { Helmet } from 'react-helmet';
 import './index.less';
 import Nav from './Nav';
 import HeaderUser from '@/components/user/HeaderUser';
+import zhCN from 'antd/es/locale/zh_CN';
 
 const { Header, Footer, Sider, Content } = Layout;
 
@@ -19,7 +20,7 @@ export default class Home extends React.Component {
   };
   render() {
     return (
-      <div>
+      <ConfigProvider locale={zhCN}>
         <Helmet>
           <link rel="icon" href={logo} />
           <title>个人博客</title>
@@ -49,7 +50,7 @@ export default class Home extends React.Component {
             <Footer>兴趣使然</Footer>
           </Layout>
         </Layout>
-      </div>
+      </ConfigProvider>
     );
   }
 }
