@@ -7,7 +7,7 @@ const { CheckableTag } = Tag;
 @connect(article => ({
   article,
 }))
-class TagList extends React.Component {
+class Category extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -46,7 +46,7 @@ class TagList extends React.Component {
     }
     return (
       <List
-        header="标签"
+        header="分类"
         size="small"
         bordered
         dataSource={category}
@@ -71,4 +71,4 @@ class TagList extends React.Component {
   }
 }
 
-export default TagList;
+export default Category;

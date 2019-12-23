@@ -22,7 +22,6 @@ export default class Home extends React.Component {
     return (
       <ConfigProvider locale={zhCN}>
         <Helmet>
-          <link rel="icon" href={logo} />
           <title>个人博客</title>
         </Helmet>
         <Layout>
@@ -47,7 +46,7 @@ export default class Home extends React.Component {
             <Card className="content">
               <Content>{this.props.children}</Content>
             </Card>
-            <Footer>兴趣使然</Footer>
+            <Footer>晋ICP备19012752号</Footer>
           </Layout>
         </Layout>
       </ConfigProvider>

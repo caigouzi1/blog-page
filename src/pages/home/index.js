@@ -3,7 +3,7 @@ import { Helmet } from 'react-helmet';
 import { connect } from 'dva';
 import TitleList from '@/components/TitleList';
 import { Row, Col, Button, Icon, Affix } from 'antd';
-import TagList from '@/components/TagList';
+import Category from '@/components/Category';
 import { Link } from 'dva/router';
 
 @connect(article => ({
@@ -29,7 +29,7 @@ class Article extends React.Component {
         </Col>
         <Col span={5}>
           <Affix offsetTop={200}>
-            <TagList />
+            <Category />
           </Affix>
         </Col>
       </Row>
