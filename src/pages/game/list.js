@@ -1,6 +1,5 @@
 import React from 'react';
 import { Typography, Row, Col, Card } from 'antd';
-import HeaderUser from '@/components/user/HeaderUser';
 import { Helmet } from 'react-helmet';
 const { Title, Text } = Typography;
 
@@ -14,7 +13,7 @@ export default class Test extends React.Component {
         <Title level={3}>游戏列表</Title>
         <Row type="flex" justify="space-between" align="bottom">
           <Col span={11}>
-            <a target="_blank" href="http://game.elpsycongroo.xyz/clearmines/">
+            <a target="_blank" rel="noopener noreferrer" href="http://game.elpsycongroo.xyz/clearmines/">
               <Card title="扫雷" hoverable={true} bordered={true}>
                 <Text type="secondary">
                   以最短的时间标记<Text type="danger">所有地雷</Text>即可获胜

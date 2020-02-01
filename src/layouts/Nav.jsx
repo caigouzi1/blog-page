@@ -12,7 +12,7 @@ const MyIcon = Icon.createFromIconfontCN({
   user,
 }))
 class Nav extends Component {
-  handleClick = e => {};
+  handleClick = e => { };
 
   isLogin = () => {
     const { user } = this.props.user;
@@ -38,8 +38,8 @@ class Nav extends Component {
       let titleIcon = item.icon ? (
         <Icon type={item.icon} />
       ) : (
-        <MyIcon type={'icon-' + item.myIcon} />
-      );
+          <MyIcon type={'icon-' + item.myIcon} />
+        );
       return item.isAdmin ? (
         isLogin ? (
           <Menu.Item key={item.key}>
@@ -49,16 +49,16 @@ class Nav extends Component {
             </Link>
           </Menu.Item>
         ) : (
-          ''
-        )
+            ''
+          )
       ) : (
-        <Menu.Item key={item.key}>
-          <Link to={item.link}>
-            {titleIcon}
-            <span>{item.title}</span>
-          </Link>
-        </Menu.Item>
-      );
+          <Menu.Item key={item.key}>
+            <Link to={item.link}>
+              {titleIcon}
+              <span>{item.title}</span>
+            </Link>
+          </Menu.Item>
+        );
     });
   };
 
@@ -70,8 +70,6 @@ class Nav extends Component {
       });
     }
   }
-
-  async componentWillMount() {}
 
   render() {
     const getCurrentNavKey = this.getCurrentNav();
@@ -86,7 +84,7 @@ class Nav extends Component {
         {menuTree}
         <Menu theme="dark" selectable={false} style={{ position: 'absolute', bottom: 20 }}>
           <Menu.Item style={{ fontSize: 16 }}>
-            <a href="https://github.com/caigouzi1" target="_blank">
+            <a href="https://github.com/caigouzi1" target="_blank" rel="noopener noreferrer">
               <Icon type="github" />
               <span>GitHub</span>
             </a>

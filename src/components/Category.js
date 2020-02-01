@@ -32,16 +32,16 @@ class Category extends React.Component {
   };
 
   handleCheak = id => {
-    return this.state.checked == id ? true : false;
+    return this.state.checked === id ? true : false;
   };
 
   isArray(o) {
-    return Object.prototype.toString.call(o) == '[object Array]';
+    return Object.prototype.toString.call(o) === '[object Array]';
   }
 
   getCategoryList = () => {
     let { category } = this.props.article.article;
-    if (this.isArray(category) && category.length != 0 && category[0].Title !== '全部') {
+    if (this.isArray(category) && category.length !== 0 && category[0].Title !== '全部') {
       category.unshift({ Id: 0, Title: '全部' });
     }
     return (

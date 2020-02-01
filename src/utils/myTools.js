@@ -1,4 +1,3 @@
-/* global define */
 import { Remarkable } from 'remarkable';
 import hljs from 'highlight.js';
 import 'highlight.js/styles/github.css';
@@ -24,16 +23,16 @@ export default {
   //MarkDown转HTML
   MdtoHtml(content) {
     const md = new Remarkable({
-      highlight: function(str, lang) {
+      highlight: function (str, lang) {
         if (lang && hljs.getLanguage(lang)) {
           try {
             return hljs.highlight(lang, str).value;
-          } catch (err) {}
+          } catch (err) { }
         }
 
         try {
           return hljs.highlightAuto(str).value;
-        } catch (err) {}
+        } catch (err) { }
 
         return ''; // use external default escaping
       },
@@ -44,13 +43,14 @@ export default {
 
   //提取MarkDown的摘要
   getMdAbstract(content, title) {
-    const length = 150;
+    // const length = 150;
     let str = this.MdtoHtml(content);
     str = this.removeHTMLTag(str);
     str = this.trim(str, title);
-    if (str.length <= length) {
-      return str;
-    }
-    return str.substr(0, length) + '...';
+    return str;
+    // if (str.length <= length) {
+    //   return str;
+    // }
+    // return str.substr(0, length) + '...';
   },
 };

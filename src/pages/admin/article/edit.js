@@ -1,5 +1,4 @@
 import React from 'react';
-import { connect } from 'dva';
 import MarkDownEdit from '@/components/MarkDownEdit';
 import { Helmet } from 'react-helmet';
 
@@ -11,7 +10,7 @@ class Edit extends React.Component {
     };
   }
 
-  componentDidMount() {}
+  componentDidMount() { }
 
   render() {
     return (

@@ -1,11 +1,9 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
 import { connect } from 'dva';
-import { Input, Icon, Button, Row, Col, Affix } from 'antd';
+import { Input } from 'antd';
 import POWERMODE from '@/assets/js/activate-power-mode';
-import Utils from '@/utils/myTools';
 import ShowMarkDown from '@/components/ShowMarkDown/index';
-import { Link } from 'dva/router';
 import GoBack from '@/components/GoBack';
 
 const { TextArea } = Input;
@@ -43,16 +41,8 @@ class Article extends React.Component {
   }
 
   render() {
-    const backStyle = {
-      position: 'relative',
-      right: 180,
-      fontSize: '20px',
-      height: 30,
-    };
-    const id = this.props.match.params.id;
     const { article } = this.props.article;
     let detail = article.detail;
-    const content = Utils.MdtoHtml(detail.Content);
     return (
       <div>
         <Helmet>

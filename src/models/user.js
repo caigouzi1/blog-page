@@ -37,7 +37,6 @@ export default {
     },
     *userLogout({ payload }, { call, put }) {
       const response = yield call(Api.queryUserLogout, payload);
-      const data = response.data;
       if (!isError(response)) {
         yield put({
           type: 'updata',

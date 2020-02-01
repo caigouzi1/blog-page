@@ -36,7 +36,7 @@ class Modify extends React.Component {
     });
   }
 
-  updataContent = e => {};
+  updataContent = e => { };
 
   render() {
     return (
