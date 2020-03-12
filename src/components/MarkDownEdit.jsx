@@ -200,7 +200,6 @@ class MarkDownEdit extends React.Component {
             span={12}
             style={{
               marginTop: 20,
-              height: 750,
               overflow: 'auto',
             }}
           >

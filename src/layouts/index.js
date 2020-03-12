@@ -46,7 +46,7 @@ export default class Home extends React.Component {
             <Card className="content">
               <Content>{this.props.children}</Content>
             </Card>
-            <Footer>晋ICP备19012752号</Footer>
+            <Footer><a href='http://beian.miit.gov.cn' target='_blank' rel="noopener noreferrer">晋ICP备19012752号-1</a></Footer>
           </Layout>
         </Layout>
       </ConfigProvider>
