@@ -1,5 +1,6 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
+import { PageHeader } from 'antd';
 import MarkDownEdit from '@/components/MarkDownEdit';
 import { connect } from 'dva';
 
@@ -36,11 +37,18 @@ class Modify extends React.Component {
     });
   }
 
-  updataContent = e => {};
+  updataContent = e => { };
 
   render() {
     return (
-      <div>
+      <PageHeader
+        onBack={() => window.history.back()}
+        title='返回'
+        style={{
+          maxWidth: '1200px',
+          margin: 'auto'
+        }}
+      >
         <Helmet>
           <title>修改文章</title>
         </Helmet>
@@ -52,7 +60,7 @@ class Modify extends React.Component {
           categoryTitle={this.state.categoryTitle}
           category={this.state.category}
         />
-      </div>
+      </PageHeader>
     );
   }
 }

@@ -138,7 +138,7 @@ class MarkDownEdit extends React.Component {
   };
 
   render() {
-    const defaultContent = this.state.content;
+    // const defaultContent = this.state.content;
     const { article } = this.props.article;
     const category = article.category;
     return (
@@ -182,6 +182,7 @@ class MarkDownEdit extends React.Component {
             <TextArea
               className="edit"
               defaultValue={this.state.content}
+              value={this.state.content}
               rows={35}
               style={{
                 marginTop: 20,
@@ -199,7 +200,6 @@ class MarkDownEdit extends React.Component {
             span={12}
             style={{
               marginTop: 20,
-              height: 750,
               overflow: 'auto',
             }}
           >

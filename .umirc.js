@@ -30,24 +30,6 @@ export default {
       },
     ],
   ],
-  // routes :PageRoute,
-  // routes: [
-  //   {
-  //     path: '/',
-  //     component: '../layouts/index',
-  //     routes: [
-  //       { path: '/', component: './home' },
-  //       { path: '/github', component: './github' },
-  //       { path: '/article/:id', component: './article/detail' },
-  //       { path: '/edit', component: './admin/article/edit' },
-  //     ],
-  //   },
-  //   {
-  //     path: '/admin',
-  //     component: '../layouts/index',
-  //     routes: [{ path: '/article/edit', component: './admin/article/edit' }],
-  //   },
-  // ],
 
   routes: [
     {
@@ -89,5 +71,10 @@ export default {
 
   theme: {
     'primary-color': '#1DA57A',
+  },
+
+  chainWebpack: (config, { webpack }) => {
+    //省略文件后缀
+    config.resolve.extensions.prepend('jsx')
   },
 };

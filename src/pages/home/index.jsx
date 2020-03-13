@@ -1,10 +1,9 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
 import { connect } from 'dva';
-import TitleList from '@/components/TitleList';
-import { Row, Col, Button, Icon, Affix } from 'antd';
+import TitleList from '@/components/TitleList/index.jsx';
+import { Row, Col, Affix } from 'antd';
 import Category from '@/components/Category';
-import { Link } from 'dva/router';
 
 @connect(article => ({
   article,

@@ -1,9 +1,10 @@
 import { Card, Icon, Empty, Row, Col, Button, Pagination } from 'antd';
 import React, { Component } from 'react';
 import moment from 'moment';
-import { Link, withRouter } from 'dva/router';
+import { withRouter } from 'dva/router';
 import Utils from '@/utils/myTools';
 import { connect } from 'dva';
+import './index.less';
 
 @connect(article => ({
   article,
@@ -68,8 +69,12 @@ class TitleList extends Component {
   getAbstract(item) {
     if (this.props.editShowEnable) {
       return (
-        <Row>
-          <Col span={19}>{Utils.getMdAbstract(item.Content, item.Title)}</Col>
+        <Row >
+          <Col span={19}>
+            <div className="abstract">
+              {Utils.getMdAbstract(item.Content, item.Title)}
+            </div>
+          </Col>
           <Col span={2} offset={1}>
             <Button onClick={this.handleEditClick.bind(this, item)}>编辑</Button>
           </Col>
@@ -89,8 +94,8 @@ class TitleList extends Component {
     }
     moment.locale('zh-cn');
     return list.map(item => {
-      const id = item.Id;
-      const abstract = Utils.getMdAbstract(item.Content, item.Title);
+      // const id = item.Id;
+      // const abstract = Utils.getMdAbstract(item.Content, item.Title);
       return (
         <Card
           key={item.Id}
@@ -103,7 +108,11 @@ class TitleList extends Component {
           <div style={{ fontSize: 23, marginBottom: 5 }}>
             <h3>{item.Title}</h3>
           </div>
-          {this.getAbstract(item)}
+
+          <div className="abstract">
+            {this.getAbstract(item)}
+          </div>
+
           <div
             style={{
               marginTop: 5,
@@ -134,7 +143,7 @@ class TitleList extends Component {
     const dataSet = article.data;
 
     return (
-      <div>
+      <div className='titlelist'>
         {this.getList(dataSet.Data)}
         <Pagination
           style={{ textAlign: 'center' }}
