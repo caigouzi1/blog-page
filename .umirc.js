@@ -3,7 +3,8 @@ const PageRoute = Routes.Routes;
 
 export default {
   treeShaking: true,
-  history: 'hash', //路由带#号
+  // history: 'hash', //路由带#号
+  history: 'browser', //路由带#号
   // base: '/blog/', //服务器二级页面
   // publicPath: '/blog/', //服务器二级页面静态资源
   plugins: [
@@ -71,20 +72,20 @@ export default {
     },
   ],
 
-  // proxy: {
-  //   '/blogApi': {
-  //     target: 'http://blog.elpsycongroo.xyz',
-  //     changeOrigin: true,
-  //     pathRewrite: { '^/blogApi': '/blogApi' },
-  //   },
-  // },
   proxy: {
     '/blogApi': {
-      target: 'http://127.0.0.1:8080',
+      target: 'http://blog.elpsycongroo.xyz',
       changeOrigin: true,
       pathRewrite: { '^/blogApi': '/blogApi' },
     },
   },
+  // proxy: {
+  //   '/blogApi': {
+  //     target: 'http://127.0.0.1:8080',
+  //     changeOrigin: true,
+  //     pathRewrite: { '^/blogApi': '/blogApi' },
+  //   },
+  // },
 
   theme: {
     'primary-color': '#1DA57A',
